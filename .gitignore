@@ -1,0 +1,59 @@
+# ============================
+# Handbooks - Git Ignore
+# ============================
+
+# ----------------------------
+# Sistema Operativo
+# ----------------------------
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+
+# ----------------------------
+# IDEs y Editores
+# ----------------------------
+.idea/
+.vscode/
+*.iml
+*.ipr
+*.iws
+.project
+.classpath
+.settings/
+
+# ----------------------------
+# Herramientas de IA / Cursor / Agentes
+# ----------------------------
+.cursor/
+agent-transcripts/
+*.log
+logs/
+
+# ----------------------------
+# Archivos temporales y cache
+# ----------------------------
+*.tmp
+*.temp
+.cache/
+__pycache__/
+*.pyc
+*.pyo
+.ipynb_checkpoints/
+
+# ----------------------------
+# Dependencias y builds (si aplica en futuro)
+# ----------------------------
+node_modules/
+dist/
+build/
+.env
+.env.local
+*.egg-info/
+
+# ----------------------------
+# Otros
+# ----------------------------
+*.bak
+*.orig
