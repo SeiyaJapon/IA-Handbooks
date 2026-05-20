@@ -2,7 +2,9 @@
 
 Index of repositories in the Kintai organization (`bitbucket.org/kintai-digital`), grouped by domain.
 
-Last updated: 2026-04-29.
+Last verified: 2026-04-29.
+
+**Maintenance**: when a session involves a repository not listed here, add it before closing the session. Update `Last verified` whenever the catalog is reviewed or a repo is added.
 
 ---
 

@@ -208,3 +208,23 @@ Do not leave stale entries unresolved. Memory that cannot be trusted is worse th
 ### No duplication with skills
 
 If a skill already covers a topic in full, memory does not repeat it. The memory entry points to the skill.
+
+---
+
+## Architecture Decision Records
+
+Write an ADR in `memory/architecture-decisions.md` when a decision made in a session:
+
+- Affects more than one module, service, or repository
+- Closes a valid alternative that could otherwise be revisited
+- Has long-term consequences on structure, contracts, or dependencies
+
+Write it before closing the session. It does not need to be long — context, decision, and consequences is enough. Use the template in `memory/architecture-decisions.md`.
+
+Do not write ADRs for implementation details, bug fixes, or decisions that are obvious from the code.
+
+---
+
+## Repos Catalog Maintenance
+
+When a session involves a repository not listed in `memory/repos-catalog.md`, add it before closing. Update the `Last verified` date whenever a repo is added or the catalog is reviewed.
