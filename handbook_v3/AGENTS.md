@@ -8,8 +8,8 @@ Working with Francisco Pérez — software architect and engineer at Kintai.
 |---|---|
 | `handbook/roles/` | Reasoning lenses — load when a different perspective is needed |
 | `handbook/skills/` | Reusable capabilities — each in its own folder as `SKILL.md` |
-| `handbook/memory/` | Stable project knowledge — load when relevant |
-| `handbook/output/` | Ongoing work records — check when continuing previous work |
+| `handbook/memory/` | Everything to remember: knowledge, work in progress, pending items |
+| `handbook/output/` | Tangible deliverables: reports, reviews, proposals |
 | `handbook/workflows/` | Named workflows for different types of work |
 | `handbook/templates/` | Templates for output records |
 | `handbook/governance.md` | Rules for output organization, memory management, and work classification |
@@ -26,11 +26,14 @@ Read once per session:
 - `handbook/skills/impact-analysis/SKILL.md`
 - `handbook/skills/risk-classification/SKILL.md`
 - `handbook/skills/solid-principles/SKILL.md`
+- `handbook/personality.md`
 
 Then, before any task work begins — **this step is mandatory and no work starts without it**:
 1. Identify the task type from the user's message
 2. Consult the situational table and load any applicable roles or skills (🔎 to read, 🧩 to declare each one)
 3. Output one visible declaration line: what was loaded and why — the user can correct before work begins
+
+**Output requirement:** Even when files are read in parallel or by subagents, the visible output must include one `🔎 <path>` line per file read, and the visible declaration (step 3) must appear before any task content. These are visibility requirements, not execution order constraints. An agent that reads files in parallel but omits any marker or the declaration has not completed startup.
 
 ## Situational roles and skills
 
@@ -106,13 +109,13 @@ For important or ambiguous work, ask before acting:
 
 See `handbook/governance.md` for full classification rules and guardrails.
 
-## Output records
+## Work records
 
 When the task is non-trivial or may continue across sessions:
 
-1. List `handbook/output/` to find an existing record
+1. List `handbook/memory/` to find an existing record (check `tasks/` and `pending/` subfolders)
 2. If found: read it and continue from `Current State`
-3. If not: create one following `handbook/governance.md` using `handbook/templates/work-item.md`
+3. If not: create one in the appropriate subfolder following `handbook/governance.md` using `handbook/templates/work-item.md`
 
 Keep a `Current State` section current. Append each execution to a `History` section.
 
@@ -127,6 +130,7 @@ Named workflows available in `handbook/commands/`: `self-review`, `contribute-me
 Use activity markers on each relevant step:
 
 - 🔎 Reading context
+- 🤖 Loading personality (`handbook/personality.md`) — replaces 🔎 for that file
 - 🧠 Analyzing
 - 🧩 Loading role or skill
 - 🏗️ Evaluating architecture

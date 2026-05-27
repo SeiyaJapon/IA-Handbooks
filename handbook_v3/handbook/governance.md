@@ -139,7 +139,9 @@ Do not use milestones for work that fits in steps.
 
 ## Output Organization
 
-Records in `handbook/output/` must always be placed inside a category subfolder. Never directly in `output/`.
+`handbook/output/` is for tangible deliverables — documents generated with a concrete output that can be shared, reviewed, or acted on externally.
+
+Files in `output/` must always be placed inside a category subfolder. Never directly in `output/`.
 
 Before creating a new category:
 
@@ -149,29 +151,36 @@ Before creating a new category:
 4. Create subcategories only when they improve discoverability
 
 Do not create categories for one-off noise.
-Do not flatten unrelated work into the same file just to avoid creating a new category.
+Do not flatten unrelated deliverables into the same file just to avoid creating a new category.
 
-Current categories: `audits`, `tasks`, `handbook-design`, `proposals`
+Current categories: `audits`, `proposals`, `pr-reviews`
 
 Category purpose:
-- `tasks` — work tasks (features, bugs, improvements) with a ticket or reference
-- `proposals` — architectural or design proposals that are studied before acting (e.g. how to structure a new service, which pattern to adopt)
-- `audits` — reviews of existing code, infrastructure, or processes
-- `handbook-design` — decisions about the handbook itself
+- `audits` — audit reports of existing code, infrastructure, or processes
+- `proposals` — architectural or design proposals studied before acting
+- `pr-reviews` — PR review documents and comment blocks ready to post
 
 ---
 
 ## Memory Organization
 
-When adding or updating stable knowledge in `handbook/memory/`:
+`handbook/memory/` is everything the agent needs to remember across sessions: stable knowledge, work in progress, pending items, decisions, references. If it needs to survive a session boundary, it belongs here.
 
-1. List existing files under `handbook/memory/`
-2. Place the knowledge in the most appropriate existing file if one fits
-3. Create a new file only when no existing file fits
+When adding or updating content in `handbook/memory/`:
+
+1. List existing files and subfolders under `handbook/memory/`
+2. Place the content in the most appropriate existing file or subfolder if one fits
+3. Create a new file or subfolder only when nothing fits — with a concrete, functional name
 4. Prefer stable, predictable names over overly specific ones
 
 Do not create files for one-off noise.
-Do not flatten unrelated knowledge into the same file just to avoid creating a new one.
+Do not flatten unrelated content into the same file just to avoid creating a new one.
+
+Current structure:
+- Flat files — stable knowledge: decisions, rules, references, glossary, context
+- `tasks/` — work tasks in progress or recently completed, with a ticket or reference
+- `pending/` — blocked or waiting items, not yet actionable
+- `handbook-design/` — decisions and evolution of the handbook itself
 
 ---
 
@@ -179,22 +188,27 @@ Do not flatten unrelated knowledge into the same file just to avoid creating a n
 
 ### What belongs in `memory/`
 
-- Stable knowledge that is not directly inferible from the code
-- Decisions that have been made and need to survive across sessions
-- References the agent would otherwise have to rediscover each time
+- Stable knowledge not directly inferible from the code
+- Decisions that need to survive across sessions
+- References the agent would otherwise have to rediscover
+- Work in progress or task state that may continue across sessions
+- Pending items blocked on an external action
+- Anything the agent needs to remember to work well in this project
 
 ### What does not belong in `memory/`
 
-- Work in progress or task state → use `output/`
 - Detailed guidelines or explanations → use `skills/`
 - Knowledge already covered by a skill → point to the skill, do not repeat it
+- Tangible deliverables with external use → use `output/`
 
-### Entries are pointers, not explanations
+### Stable knowledge entries are pointers, not explanations
 
-A memory entry is short: one line that names a fact or points to a skill for detail. If a topic needs more than one or two lines to express, it belongs in a skill, not in memory.
+For stable knowledge entries (flat files), keep entries short: one line that names a fact or points to a skill for detail. If a topic needs more than one or two lines to express, it belongs in a skill, not in memory.
 
 ✅ `Hexagonal architecture is the default for new backend services — see skills/hexagonal-boundaries`
 ❌ A ten-line explanation of when and how to apply hexagonal architecture
+
+Work tracking entries (tasks/, pending/) may use the full work-item template.
 
 ### When memory contradicts the code
 
