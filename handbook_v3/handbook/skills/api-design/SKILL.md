@@ -1,4 +1,48 @@
-# API Design
+# API Design Skill
+
+## When to use
+
+The user asked about API contracts (REST, GraphQL, gRPC, RPC), versioning, error envelopes, idempotency at the API level, pagination, authentication shape, public surface design.
+
+## When not to use
+
+- Internal cross-service contracts that are not public: `integration-analysis`.
+- HTTP framework code (controllers, routing): use the relevant language review skill or `software-architecture` if the question is layering.
+- Error handling inside the application: `error-handling-patterns`.
+- Authentication/authorisation security posture: `security-review`.
+
+## Inputs to inspect first
+
+- Existing API contract artefacts: OpenAPI, GraphQL schema, gRPC `.proto`.
+- Versioning strategy: URL versioning, header versioning, content negotiation, none.
+- Consumers: public, partner, internal, mobile, web. Each has different stability needs.
+- Error response format: problem-details, custom envelope, raw status.
+- Auth model and where it is documented.
+- Idempotency mechanism for unsafe methods.
+- Pagination model.
+- Rate limiting and throttling.
+
+## How to work
+
+1. Inspect the contract artefacts.
+2. Identify consumers and their stability needs.
+3. Walk concerns: resource modelling, HTTP semantics, versioning, errors, idempotency, pagination, auth, rate limiting, content types.
+4. Group findings by severity.
+5. Do not change contracts unless asked. Breaking changes affect consumers.
+
+## Output
+
+Findings cited by endpoint or schema element, grouped: blockers (breaking changes shipping silently, missing auth, no idempotency on unsafe writes), defects (inconsistent error envelope, missing pagination on collection endpoints, weak versioning), nits (naming consistency).
+
+## Escalation
+
+- Internal cross-service contracts (events, integration shape): `integration-analysis`.
+- Cross-context events: `event-driven-architecture`.
+- Auth/authz posture: `security-review`.
+- Errors inside the application: `error-handling-patterns`.
+- Database shape that the API exposes: `database-design`.
+
+---
 
 ## Purpose
 

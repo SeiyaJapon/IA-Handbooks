@@ -27,7 +27,3 @@ An immutable domain concept defined entirely by its value, not by an identity. T
 ## Aggregate
 
 A cluster of domain objects treated as a single unit for data changes. Has a root entity that controls access. Consistency is enforced within the aggregate boundary.
-
-## ADR (Architecture Decision Record)
-
-A short document that captures a significant architectural decision: context, what was decided, and consequences. Stored in `memory/architecture-decisions.md`.

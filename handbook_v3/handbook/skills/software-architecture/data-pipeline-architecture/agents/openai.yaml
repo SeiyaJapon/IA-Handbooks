@@ -1,0 +1,43 @@
+name: data-pipeline-architecture
+description: >-
+  Data Pipeline Architecture skill. Use when designing or reviewing
+  systems whose primary purpose is data movement and transformation:
+  ETL, ELT, streaming, ingestion. Covers stages, idempotency, schema,
+  failure handling, backfill, observability.
+
+triggers:
+  - data pipeline
+  - etl
+  - elt
+  - streaming pipeline
+  - data ingestion
+  - data transformation
+  - airflow
+  - spark
+  - databricks
+  - dbt
+  - medallion
+  - bronze silver gold
+
+entrypoint: SKILL.md
+
+references:
+  - references/01-foundations.md
+  - references/02-batch-vs-streaming.md
+  - references/03-stages-and-idempotency.md
+  - references/04-failure-handling.md
+  - references/05-data-quality-and-schema.md
+  - references/06-relationship-with-other-disciplines.md
+  - references/07-anti-patterns.md
+  - references/08-review-checklist.md
+  - references/09-user-preferences.md
+
+rules:
+  - Each stage is idempotent.
+  - State is checkpointed; recovery is tested.
+  - Errors go to DLQ; DLQ growth is alerted.
+  - Schemas are documented and versioned.
+  - Backfill is a known, tested operation.
+  - Pipelines are observable (lag, errors, data quality).
+  - Platform is operational; the architecture is the design of stages,
+    idempotency, schema, failure handling.

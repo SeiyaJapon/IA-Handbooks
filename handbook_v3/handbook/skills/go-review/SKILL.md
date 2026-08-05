@@ -1,4 +1,45 @@
-# Go Review
+# Go Review Skill
+
+## When to use
+
+The user asked for a Go review (idiomatic style, error handling, goroutines, channels, context, modules) of a file, module, or PR.
+
+## When not to use
+
+- Architecture: `software-architecture`.
+- Concurrency design beyond Go idiom: `concurrency-patterns`.
+- Errors as a contract beyond Go idiom: `error-handling-patterns`.
+- Microservice boundaries: `microservices-architecture`.
+- Testing strategy: `testing-strategy`.
+
+## Inputs to inspect first
+
+- `go.mod`, `go.sum`, Go version (`go` directive), module path.
+- `main.go` or library entrypoint; package layout.
+- Test files (`*_test.go`), build tags, generate directives.
+- Lint setup (`golangci-lint.yaml`), formatter (`gofmt`/`goimports`).
+- Runtime model: HTTP server, CLI, library, gRPC service.
+
+## How to work
+
+1. Inspect `go.mod` and project layout.
+2. Run `go vet`, `go test`, `golangci-lint run` if practical.
+3. Walk Go-specific concerns: error wrapping, context propagation, goroutine leaks, channel ownership, panic vs error, interface placement (consumer-defined), zero values, slices/maps aliasing.
+4. Group findings by severity. Do not modify code unless asked.
+
+## Output
+
+Findings cited by file and line, grouped: blockers (goroutine leaks, ignored errors, race conditions), defects (missing context propagation, weak error wrapping, interface placement), nits (gofmt/goimports drift, naming).
+
+## Escalation
+
+- Architecture: `software-architecture`.
+- Concurrency design beyond Go idiom: `concurrency-patterns`.
+- Errors beyond Go idiom: `error-handling-patterns`.
+- Microservices, gRPC, sync chains: `microservices-architecture`, `integration-analysis`.
+- Security: `security-review`.
+
+---
 
 ## Purpose
 

@@ -1,4 +1,46 @@
-# Security Review
+# Security Review Skill
+
+## When to use
+
+The user asked for a security review of code, configuration, or design. Concerns: authentication, authorisation, secrets, OWASP top 10, data protection, IAM, secure defaults.
+
+## When not to use
+
+- Compliance-specific requirements (audit trails, retention, regulatory): `compliance-patterns`.
+- AWS IAM at infrastructure level: `aws-infrastructure`. (Security review may flag, then escalate.)
+- Test strategy that verifies security paths: `testing-strategy`.
+
+## Inputs to inspect first
+
+- Auth model: how identity is established, how authorisation decisions are made, where they are enforced.
+- Secret handling: where secrets live (env, secret manager, vault), how they are loaded, whether they reach logs or errors.
+- Input handling: validation, sanitisation, escaping per output context (HTML, SQL, shell).
+- Data classification: what is sensitive (PII, credentials, payment data, regulated data).
+- Logging: what is logged; whether secrets/PII could leak into logs or telemetry.
+- External dependencies: known CVEs, supply chain hygiene.
+- Network exposure: public vs internal, TLS, mTLS where applicable.
+
+## How to work
+
+1. Inspect auth and authorisation enforcement points.
+2. Inspect secret handling and logging paths.
+3. Walk OWASP-style concerns (injection, broken auth, sensitive data exposure, XXE, broken access control, security misconfiguration, XSS, insecure deserialization, vulnerable dependencies, insufficient logging).
+4. Group findings by severity (critical, high, medium, low).
+5. Do not modify code.
+
+## Output
+
+Findings cited by file/line, grouped by OWASP category and severity. Each finding includes: the concrete vector, the evidence (file/line), the impact, the recommended mitigation.
+
+## Escalation
+
+- Compliance-specific posture (audit, retention, regulated data): `compliance-patterns`.
+- AWS IAM design: `aws-infrastructure`.
+- API contract design (auth shape, error responses): `api-design`.
+- Observability for security signals: `observability`.
+- Specific language idioms: the corresponding language review skill.
+
+---
 
 ## Purpose
 

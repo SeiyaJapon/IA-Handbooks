@@ -1,4 +1,47 @@
-# AWS Infrastructure
+# AWS Infrastructure Skill
+
+## When to use
+
+The user asked about AWS infrastructure design (VPC, subnets, ECS clusters, EC2, ALB/NLB, security groups, IAM roles, auto-scaling, multi-AZ).
+
+## When not to use
+
+- Code that uses AWS services (Lambda function code, S3 SDK calls): `aws-review`.
+- Provisioning IaC: `terraform-review`.
+- Generic cloud strategy decisions across providers: `software-architecture`.
+- Compliance posture: `compliance-patterns`.
+
+## Inputs to inspect first
+
+- Network topology: VPCs, subnets (public/private), CIDR ranges, NAT gateways, IGW.
+- Routing tables; per-AZ design.
+- Security groups and NACLs; inbound/outbound rules; least-privilege scope.
+- Load balancer choice: ALB vs NLB; listeners, target groups, health checks.
+- ECS / EC2 design: task definitions, capacity providers, service auto-scaling, instance types.
+- IAM: instance profiles, task roles, scope.
+- Multi-AZ design and failure isolation.
+- Cost-relevant resources: NAT gateways, Transit Gateway, premium tiers.
+
+## How to work
+
+1. Inspect topology and IAM scope first.
+2. Walk service-by-service concerns; identify single points of failure.
+3. Identify cost-impacting resources and ownership boundaries.
+4. Group findings by severity.
+
+## Output
+
+Findings grouped: blockers (open security groups to 0.0.0.0/0, single-AZ for critical paths, root-equivalent IAM), defects (oversized instances, oversharing of IAM, weak health checks), nits (tagging, naming).
+
+## Escalation
+
+- Code-level AWS service usage: `aws-review`.
+- IaC: `terraform-review`.
+- Architectural choice (long-running vs serverless, microservices vs monolith): `software-architecture` and the relevant sub-skill.
+- Security posture: `security-review`.
+- Compliance: `compliance-patterns`.
+
+---
 
 ## Purpose
 

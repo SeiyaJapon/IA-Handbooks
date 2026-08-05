@@ -1,4 +1,67 @@
-# QA Review
+# QA Review Skill
+
+## When to use
+
+The user asked for a PR/code review and the diff spans multiple concerns. This skill is the integrating router for general PR reviews: it composes other review skills as the diff demands.
+
+## When not to use
+
+- The user named a single language or technology. Use the corresponding review skill directly.
+- The user asked for an architecture review. Use `software-architecture`.
+- The user asked for a security review. Use `security-review`.
+- The user asked for testing strategy guidance. Use `testing-strategy`.
+
+## Inputs to inspect first
+
+- The diff: files, additions, deletions, areas affected.
+- The PR description (if any): intent, scope, link to ticket.
+- Test coverage on the changed paths.
+- Build/test/lint/typecheck status if available.
+
+## Mandatory composition for any code review
+
+A review run through this skill **always** loads the following five, regardless of the diff or the request phrasing:
+
+- `qa-review` (this skill)
+- `software-design/ddd` — bounded contexts, aggregates, value objects, ubiquitous language. Required even if the repo does not currently apply DDD; the absence is itself a finding.
+- `software-architecture/hexagonal-architecture` — ports, adapters, layer boundaries, dependency direction. Required even if the repo has no architecture; the absence is itself a finding. The ecosystem direction is hexagonal + DDD where missing.
+- `software-design/solid-principles` — SRP, OCP, LSP, ISP, DIP.
+- `code-readability` — names, function size, prose-like flow.
+
+Additional skills compose on top per the diff: `financial-domain-patterns`, `security-review`, `compliance-patterns`, the relevant language review (`typescript-review`, `python-review`, etc.), `database-design`, `api-design`, `testing-strategy`, `observability`. Load only those whose concerns the diff actually touches.
+
+A review that does not consider bounded contexts, layer boundaries, dependency direction, SOLID, or readability is incomplete by definition.
+
+If the repo evidently uses a different sibling architecture (clean, onion, layered, MVC), substitute `hexagonal-architecture` for the matching one. In the current Kintai ecosystem, only `finances/` is hexagonal; everywhere else, hexagonal is the target lens, and loading it is what surfaces the gap.
+
+## How to work
+
+1. Read the diff and infer the change's intent.
+2. Load the mandatory base five above. Add the additional skills the diff demands.
+3. Walk findings by concern, then by severity.
+4. Group: blockers, defects, nits, suggestions.
+5. Do not modify code unless asked.
+
+## Output
+
+A grouped review:
+
+- **Blockers** that must be fixed before merge.
+- **Defects** that should be fixed but do not block.
+- **Nits** small style/preference issues.
+- **Suggestions** opportunities for follow-up work, not requested in this review.
+
+## Escalation
+
+When the diff is dominantly one concern, escalate to that concern's primary skill rather than running it second-hand:
+
+- Architectural change: `software-architecture` and the relevant sub-skill.
+- Design change inside a module: `software-design`.
+- AI integration: the relevant `ai-systems` sub-skill.
+- Security: `security-review`.
+- Specific language: the corresponding language review skill.
+
+---
 
 ## Purpose
 

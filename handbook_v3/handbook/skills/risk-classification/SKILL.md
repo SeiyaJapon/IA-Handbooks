@@ -1,4 +1,38 @@
-# Risk Classification
+# Risk Classification Skill
+
+## When to use
+
+The user asked to estimate the risk of a technical change, decision, or design.
+
+## When not to use
+
+- The user asked for impact analysis (structural reach): `impact-analysis`.
+- The user asked for review (quality, correctness): the appropriate review skill.
+
+## Inputs to inspect first
+
+- The output of `impact-analysis` (or its equivalent).
+- Sensitive areas (auth, money, contracts, shared foundations, persistence, messaging, regulated data).
+- Reversibility of the change.
+- Existing tests and observability on the affected paths.
+
+## How to work
+
+1. Read the impact analysis output.
+2. Apply heuristics: transversal beats local; sensitive area presence; uncertainty.
+3. Classify low / medium / high.
+4. State the main reason in one sentence.
+
+## Output
+
+A risk class with one-sentence justification.
+
+## Escalation
+
+- Architectural rework: `software-architecture`.
+- Security-specific risk: `security-review`.
+
+---
 
 ## Purpose
 

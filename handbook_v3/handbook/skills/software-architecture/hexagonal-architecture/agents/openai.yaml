@@ -1,0 +1,61 @@
+# OpenAI agent binding for the `hexagonal-architecture` skill.
+#
+# This file declares how the skill is exposed to an OpenAI-style agent runtime.
+# The exact schema depends on the runtime in use; adjust field names and
+# structure to match the platform conventions used in this project.
+#
+# Treat this file as a stub: SKILL.md is the canonical source of truth, and
+# references/ contains the long-form reference material.
+
+name: hexagonal-architecture
+description: >-
+  Hexagonal Architecture skill (Ports and Adapters). Use when designing,
+  reviewing, or refactoring software with hexagonal: ports (driving and
+  driven), adapters, the three-layer model (domain, application,
+  infrastructure), the dependency rule, and the layout for projects that
+  may include multiple bounded contexts.
+
+triggers:
+  - hexagonal
+  - hexagonal architecture
+  - ports and adapters
+  - port adapter
+  - driving adapter
+  - driven adapter
+  - input adapter
+  - output adapter
+  - application core
+  - dependency rule
+  - inward dependencies
+  - isolate the domain
+  - cockburn
+
+entrypoint: SKILL.md
+
+references:
+  - references/01-foundations.md
+  - references/02-ports-and-adapters.md
+  - references/03-layers-and-direction.md
+  - references/04-driving-adapters.md
+  - references/05-driven-adapters.md
+  - references/06-layout-and-multiple-contexts.md
+  - references/07-relationship-with-other-disciplines.md
+  - references/08-anti-patterns.md
+  - references/09-review-checklist.md
+  - references/10-user-preferences.md
+
+# Behaviour rules surfaced from SKILL.md, restated here so the runtime can
+# enforce them as part of the skill activation contract.
+rules:
+  - Never start hexagonal work from folders, frameworks, transports, or
+    persistence. Always start from the application core and its ports.
+  - The valid layers are exactly three (domain, application, infrastructure).
+    Presentation is not a layer.
+  - Dependencies point inward only. Domain depends on nothing; application
+    depends on domain and ports; infrastructure depends on application and
+    domain.
+  - Ports live in domain or application. Adapters live in infrastructure.
+    A port in infrastructure is a violation.
+  - Hexagonal is independent of DDD, Clean Architecture, Onion Architecture,
+    CQRS, Event Sourcing, EDA, microservices, and serverless. Do not load
+    those skills as part of hexagonal work; finish the hexagonal step first.

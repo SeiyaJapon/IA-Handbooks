@@ -1,4 +1,45 @@
-# Docker Review
+# Docker Review Skill
+
+## When to use
+
+The user asked for a Docker review (Dockerfiles, image strategy, multi-stage builds, docker-compose, container security, base images) of a file or PR.
+
+## When not to use
+
+- Container orchestration at platform level (ECS, Kubernetes, Cloud Run): `aws-infrastructure` or the relevant platform skill.
+- IaC for infrastructure: `terraform-review`.
+- Long-running service runtime concerns: `long-running-services-architecture`.
+- Serverless: `serverless-architecture`.
+
+## Inputs to inspect first
+
+- `Dockerfile`(s), `docker-compose.yml`, `.dockerignore`, multi-stage structure.
+- Base image: official, Alpine, distroless, scratch. Tag pinned or floating?
+- Build context, COPY patterns, ARG/ENV usage, secrets handling.
+- Final image size, layer count, cache friendliness.
+- User: root vs non-root.
+- Healthcheck, ENTRYPOINT vs CMD, signal handling.
+- Compose: networks, volumes, environment, depends_on (and limits).
+
+## How to work
+
+1. Inspect Dockerfile(s) and compose file.
+2. Run `docker build` if practical and safe; `hadolint` if available.
+3. Walk Docker-specific concerns: pinned base, minimal layers, root user, secrets in build args, multi-stage to drop build deps, healthcheck, signal handling.
+4. Group findings by severity. Do not modify files unless asked.
+
+## Output
+
+Findings cited by file and line, grouped: blockers (running as root, secrets baked in, latest tag in production), defects (no multi-stage, missing healthcheck, large image), nits (layer order for cache, .dockerignore gaps).
+
+## Escalation
+
+- Container orchestration platform decisions: `aws-infrastructure` or relevant platform skill.
+- IaC and provisioning: `terraform-review`.
+- Long-running runtime concerns: `long-running-services-architecture`.
+- Security: `security-review`.
+
+---
 
 ## Purpose
 

@@ -1,4 +1,47 @@
-# Database Design
+# Database Design Skill
+
+## When to use
+
+The user asked about persistence models, queries, transactions, migrations, indexes, constraints, or data ownership.
+
+## When not to use
+
+- ETL/streaming pipelines: `data-pipeline-architecture`.
+- AI / RAG corpus storage: `rag-design`.
+- Domain modelling (aggregates, value objects): `ddd`.
+- Architectural placement of persistence (port/adapter, repository): the relevant architecture skill (`hexagonal-architecture`, `clean-architecture`, `onion-architecture`).
+- Data ownership across services: `microservices-architecture` (each service owns its data).
+
+## Inputs to inspect first
+
+- Database engine and version, hosting model (managed, self-hosted).
+- Schema: tables, types, constraints, foreign keys, indexes.
+- Migrations: how they are run, rollback policy, gap-free versioning.
+- Query patterns: read-heavy, write-heavy, OLTP vs analytical.
+- Transaction boundaries: where transactions start and end.
+- Concurrency model: optimistic, pessimistic, isolation level.
+- Data ownership: who writes, who reads, sharing across services or contexts.
+
+## How to work
+
+1. Inspect schema and queries together; queries reveal missing indexes and over-normalised paths.
+2. Walk concerns: index design, transaction scope, isolation, migrations, constraints, partitioning, replication.
+3. Group findings by severity. Do not modify schema unless asked.
+
+## Output
+
+Findings cited by table/column, grouped: blockers (missing constraints on regulated data, dangerous migrations, unindexed hot paths), defects (over-normalised joins, weak transaction boundaries, brittle migrations), nits (naming, ordering).
+
+## Escalation
+
+- Architectural placement of persistence: relevant architecture skill.
+- Cross-service data sharing: `microservices-architecture`.
+- ETL/streaming over the data: `data-pipeline-architecture`.
+- Audit, retention, regulated data: `compliance-patterns`.
+- Performance analysis: `performance-analysis`.
+- Security of data at rest: `security-review`.
+
+---
 
 ## Purpose
 

@@ -1,0 +1,64 @@
+# OpenAI agent binding for the `ddd` skill.
+#
+# This file declares how the skill is exposed to an OpenAI-style agent runtime.
+# The exact schema depends on the runtime in use; adjust field names and
+# structure to match the platform conventions used in this project.
+#
+# Treat this file as a stub: the SKILL.md is the canonical source of truth,
+# and references/ contains the long-form reference material.
+
+name: ddd
+description: >-
+  Domain-Driven Design skill. Use when designing, reviewing, or refactoring
+  software with DDD: bounded contexts, aggregates, ubiquitous language,
+  domain model, hexagonal architecture, application services, repositories,
+  domain events, tactical and strategic design.
+
+triggers:
+  - ddd
+  - domain-driven design
+  - bounded context
+  - bounded contexts
+  - aggregate
+  - aggregates
+  - ubiquitous language
+  - domain model
+  - domain event
+  - domain events
+  - hexagonal architecture
+  - ports and adapters
+  - application service
+  - application services
+  - repository
+  - repositories
+  - tactical design
+  - strategic design
+  - context map
+  - anti-corruption layer
+
+entrypoint: SKILL.md
+
+references:
+  - references/01-ddd-foundations.md
+  - references/02-strategic-design.md
+  - references/03-bounded-contexts.md
+  - references/04-context-mapping.md
+  - references/05-tactical-patterns.md
+  - references/06-application-layer.md
+  - references/07-integration-patterns.md
+  - references/08-review-checklist.md
+  - references/09-user-preferences.md
+
+# Behaviour rules surfaced from SKILL.md, restated here so the runtime can
+# enforce them as part of the skill activation contract.
+rules:
+  - Never start with folders, layers, repositories, controllers, queues,
+    databases, CQRS, Event Sourcing, or Event-Driven Architecture.
+  - Always start with the domain.
+  - Mandatory order: applicability, subdomains, language, bounded contexts,
+    boundaries, context map, internal model, tactical patterns, layout,
+    integration patterns.
+  - A bounded context is a semantic boundary, not a folder, module, package,
+    namespace, microservice, repository, or database schema.
+  - CQRS, Event Sourcing, and EDA are optional patterns, not DDD defaults.
+  - Do not create separate skills for CQRS, Event Sourcing, or EDA yet.

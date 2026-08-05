@@ -1,4 +1,40 @@
-# Environment Strategy
+# Environment Strategy Skill
+
+## When to use
+
+The user asked about environment management, promotion strategy, deployment pipelines, ephemeral environments, staging/preprod/prod design.
+
+## When not to use
+
+- Provisioning IaC for one environment: `terraform-review`.
+- Cloud architecture: `aws-infrastructure`.
+- Specific service operational concerns: `long-running-services-architecture` or `serverless-architecture`.
+
+## Inputs to inspect first
+
+- Current environments and how they are deployed.
+- Branch strategy and pipeline design.
+- Artifact strategy (build once, promote many; rebuild per environment).
+- DB and infra coupling per environment.
+- Multi-repo coordination if applicable.
+
+## How to work
+
+1. Map the current state.
+2. Identify the active pain (overwriting, manual coordination, no preprod, drift).
+3. Propose a model that addresses the pain at minimum cost.
+4. Surface trade-offs.
+
+## Output
+
+A model recommendation tied to the project's specific constraints; not a generic best-practice list.
+
+## Escalation
+
+- Provisioning IaC: `terraform-review`.
+- Cloud architecture: `aws-infrastructure`.
+
+---
 
 ## Purpose
 

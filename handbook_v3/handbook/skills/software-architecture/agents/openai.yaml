@@ -1,0 +1,75 @@
+# OpenAI agent binding for the `software-architecture` mega-skill.
+#
+# This is the entry point for cross-architecture decisions: choosing,
+# comparing, migrating, or reviewing across architectures. For style-specific
+# work (hexagonal, clean, onion, etc.), load the corresponding sub-skill at
+# the same level as this SKILL.md.
+#
+# Treat this file as a stub: SKILL.md is the canonical source of truth, and
+# references/ contains the long-form reference material.
+
+name: software-architecture
+description: >-
+  Software architecture mega-skill. Use when discussing, designing, choosing,
+  comparing, reviewing, or migrating software architectures across styles.
+  Covers what an architecture is (and is not), how to choose one based on
+  forces, comparison across architectures, migration paths, the relationship
+  between architecture and other disciplines (design, patterns, paradigms,
+  frameworks, deployment), cross-architecture anti-patterns, and review.
+
+triggers:
+  - software architecture
+  - choose architecture
+  - pick architecture
+  - architecture decision
+  - compare architectures
+  - migrate architecture
+  - architectural review
+  - which architecture
+  - what architecture
+  - architecture vs design
+  - architecture vs framework
+  - architecture vs pattern
+
+entrypoint: SKILL.md
+
+references:
+  - references/01-what-is-software-architecture.md
+  - references/02-how-to-choose-an-architecture.md
+  - references/03-architectures-overview.md
+  - references/04-comparison-matrix.md
+  - references/05-migration-paths.md
+  - references/06-architecture-vs-other-disciplines.md
+  - references/07-anti-patterns.md
+  - references/08-review-checklist.md
+  - references/09-user-preferences.md
+
+# Sub-skills (specific architectures) live at the same level as this file's
+# parent directory. Each is complete on its own; this mega-skill governs
+# cross-architecture work, not drilling into one specific style.
+sub_skills:
+  - hexagonal-architecture
+  - clean-architecture
+  - onion-architecture
+  - layered-architecture
+  - mvc
+  - microservices-architecture
+  - serverless-architecture
+  - event-driven-architecture
+
+# Behaviour rules surfaced from SKILL.md, restated here so the runtime can
+# enforce them as part of the skill activation contract.
+rules:
+  - Never start architectural work from folders, frameworks, transports, or
+    persistence. Always start from the forces of the system.
+  - Architecture is the structural decision. Frameworks, design methods
+    (DDD), patterns (CQRS, ES), and paradigms (functional, OO) are not
+    architectures.
+  - Pick one architecture per codebase. Mixing sibling-architecture
+    vocabularies (hexagonal + clean + onion) is forbidden.
+  - Composition is allowed when deliberate (hexagonal + microservices,
+    hexagonal + EDA, hexagonal + serverless).
+  - Migrations have a destination, a deadline, a checkpoint. Permanent
+    half-states are not acceptable.
+  - When the case is inside one specific architecture, load that sub-skill
+    directly. This mega-skill is for cross-architecture decisions.

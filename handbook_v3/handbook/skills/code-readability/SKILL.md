@@ -1,4 +1,39 @@
-# Code Readability
+# Code Readability Skill
+
+## When to use
+
+The user asked for a readability review: naming, function size, prose-like flow, comments, structure of one file or module.
+
+## When not to use
+
+- Architecture, design, patterns, SOLID: route to the relevant skill. Readability is one input, not the whole answer.
+- Language-specific idioms (TS, Python, Go, etc.): the language review skill is primary; readability is supporting.
+- Performance: `performance-analysis`.
+
+## Inputs to inspect first
+
+- The file in context. Conventions are local.
+- Project's lint/format configuration. Do not fight the formatter.
+- Code kind (production, test, generated, script).
+
+## How to work
+
+1. Read the code as prose. Where does the reader stumble?
+2. Walk concerns: names, function size, single-responsibility per function, comment quality (why not what), structure of imports and exports.
+3. Suggest minimal changes. Do not refactor; the goal is readability deltas.
+
+## Output
+
+Findings grouped: blockers (mis-named identifiers that hide behaviour, dead code masquerading as live), defects (functions doing several things, comments that explain what instead of why), nits (style preferences).
+
+## Escalation
+
+- Design issues (SOLID, patterns): `software-design`.
+- Architecture: `software-architecture`.
+- Specific language idioms: language review skill.
+- Refactoring direction beyond cosmetic: `refactoring-strategy`.
+
+---
 
 ## Purpose
 

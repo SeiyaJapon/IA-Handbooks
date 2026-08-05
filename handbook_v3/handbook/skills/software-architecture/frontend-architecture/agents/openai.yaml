@@ -1,0 +1,43 @@
+name: frontend-architecture
+description: >-
+  Frontend Architecture skill. Use when designing or reviewing UI client
+  applications: SPAs, web clients, mobile web. Covers feature modules,
+  state management, data flow, routing, shared layers, anti-patterns.
+
+triggers:
+  - frontend architecture
+  - frontend
+  - spa
+  - component architecture
+  - feature modules
+  - state management
+  - lazy loading
+  - frontend layers
+  - design system
+
+entrypoint: SKILL.md
+
+references:
+  - references/01-foundations.md
+  - references/02-feature-modules.md
+  - references/03-state-management.md
+  - references/04-data-flow.md
+  - references/05-routing-and-lazy-loading.md
+  - references/06-shared-layers.md
+  - references/07-relationship-with-other-disciplines.md
+  - references/08-anti-patterns.md
+  - references/09-review-checklist.md
+  - references/10-user-preferences.md
+
+rules:
+  - Features are isolated modules with public APIs. No cross-feature
+    internal imports.
+  - State lives at the lowest level that needs it. Server state and
+    client state are distinct.
+  - API calls are in a service layer or query library, never in
+    components.
+  - Components are composable, single-responsibility.
+  - Routing is declarative; feature modules are lazy-loaded.
+  - Shared modules are imported by features, never the reverse.
+  - Business rules belong on the backend. The frontend may duplicate
+    for UX; the backend is authoritative.

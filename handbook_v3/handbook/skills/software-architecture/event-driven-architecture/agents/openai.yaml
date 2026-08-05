@@ -1,0 +1,41 @@
+name: event-driven-architecture
+description: >-
+  Event-Driven Architecture skill. Use when designing or reviewing
+  systems where events are the primary communication mode. Covers
+  event design, contracts, choreography vs orchestration, delivery
+  semantics, idempotency, outbox, DLQ, sagas, observability.
+
+triggers:
+  - event-driven architecture
+  - eda
+  - event bus
+  - message broker
+  - choreography
+  - orchestration
+  - saga
+  - event sourcing reactive
+  - publish subscribe at architectural level
+  - async workflows
+
+entrypoint: SKILL.md
+
+references:
+  - references/01-foundations.md
+  - references/02-events-and-contracts.md
+  - references/03-choreography-vs-orchestration.md
+  - references/04-delivery-and-failure.md
+  - references/05-relationship-with-other-disciplines.md
+  - references/06-anti-patterns.md
+  - references/07-review-checklist.md
+  - references/08-user-preferences.md
+
+rules:
+  - Events are business facts in past tense, owned by one producer.
+  - At-least-once delivery is the default. Consumers are idempotent.
+  - Dead-letter queues for every consumer.
+  - Transactional outbox where producer-side event loss is unacceptable.
+  - Sagas have explicit compensations and are observable.
+  - EDA is a paradigm. The broker is the technology.
+  - EDA composes with hexagonal/clean/onion (internally), microservices
+    (deployment), DDD (domain events feed EDA), CQRS (read models from
+    events).

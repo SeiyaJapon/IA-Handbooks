@@ -1,4 +1,39 @@
-# Impact Analysis
+# Impact Analysis Skill
+
+## When to use
+
+The user asked to estimate the structural impact of a change, diff, or proposed migration: which files, modules, contexts, services are affected; transversal vs local.
+
+## When not to use
+
+- Risk classification: `risk-classification` (this skill provides the input; risk classification consumes it).
+- Architectural review of the change itself: `software-architecture`.
+
+## Inputs to inspect first
+
+- The diff or list of changed files.
+- Affected modules, contexts, services.
+- Sensitive areas: auth, money, contracts, shared libraries, configuration, persistence, messaging.
+
+## How to work
+
+1. List the changed files.
+2. Identify affected modules/contexts/services.
+3. Walk for transversal signals (cross-context, cross-service, contracts, shared foundations).
+4. Flag sensitive areas.
+5. Output a concise impact report.
+
+## Output
+
+A structured impact summary: files, modules, contexts, services, sensitive areas, transversal vs local classification.
+
+## Escalation
+
+- Risk classification: `risk-classification`.
+- Architecture review: `software-architecture`.
+- Integration impact: `integration-analysis`.
+
+---
 
 ## Purpose
 

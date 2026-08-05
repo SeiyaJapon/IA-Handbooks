@@ -1,0 +1,48 @@
+name: ai-systems
+description: >-
+  AI Systems mega-skill. Entry point for AI/ML/LLM work: deciding when
+  AI fits, choosing among disciplines (integration, agents, prompts, RAG,
+  ops, ML), evaluation, cost, latency, safety, vendor management.
+
+triggers:
+  - ai system
+  - ai design
+  - llm system
+  - ai integration
+  - ai agent
+  - prompt engineering
+  - rag
+  - retrieval augmented
+  - llm ops
+  - ml
+  - machine learning
+  - ai evaluation
+
+entrypoint: SKILL.md
+
+references:
+  - references/01-what-is-an-ai-system.md
+  - references/02-when-to-use-ai.md
+  - references/03-ai-disciplines-overview.md
+  - references/04-evaluation-and-monitoring.md
+  - references/05-cost-latency-and-safety.md
+  - references/06-vendor-and-model-management.md
+  - references/07-anti-patterns.md
+  - references/08-review-checklist.md
+  - references/09-user-preferences.md
+
+sub_skills:
+  - ai-integration
+  - ai-agents
+  - prompt-engineering
+  - rag-design
+  - llm-ops
+  - ml-review
+
+rules:
+  - AI is one tool. Consider non-AI alternatives first.
+  - Evaluation is part of the design, not an afterthought.
+  - Cost, latency, safety are first-order operational concerns.
+  - Vendor coupling is isolated (hexagonal-like). Model versions pinned.
+  - Smallest model that meets quality.
+  - Fallbacks are designed for AI failures.

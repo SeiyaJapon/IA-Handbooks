@@ -1,0 +1,39 @@
+name: serverless-architecture
+description: >-
+  Serverless Architecture skill. Use when designing or reviewing software
+  on FaaS platforms (Lambda, Cloud Functions, Workers). Covers function
+  design, cold starts, state, connections, anti-patterns, review.
+
+triggers:
+  - serverless
+  - lambda
+  - faas
+  - cloud functions
+  - cloud run
+  - azure functions
+  - cloudflare workers
+  - cold start
+  - vendor managed compute
+
+entrypoint: SKILL.md
+
+references:
+  - references/01-foundations.md
+  - references/02-function-design.md
+  - references/03-cold-starts-and-performance.md
+  - references/04-state-and-connections.md
+  - references/05-relationship-with-other-disciplines.md
+  - references/06-anti-patterns.md
+  - references/07-review-checklist.md
+  - references/08-user-preferences.md
+
+rules:
+  - Each function has one job.
+  - Functions are stateless; state lives outside.
+  - The handler is a thin driving adapter; the core is platform-free.
+  - Cold starts are real. Mitigate where they matter.
+  - Database connections pool at module level. Use a proxy or
+    connection-less databases for high concurrency.
+  - Long-running work does not fit serverless. Use long-running compute.
+  - Serverless is the runtime, not the architecture. The architecture
+    inside the function (hexagonal/clean/onion) is a separate decision.

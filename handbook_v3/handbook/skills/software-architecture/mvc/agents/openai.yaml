@@ -1,0 +1,41 @@
+name: mvc
+description: >-
+  Model-View-Controller skill. Use when designing or reviewing UI structure
+  with MVC: controllers, views, models, and how they compose with a larger
+  architecture (hexagonal, clean, onion, layered). Covers variants (MVP,
+  MVVM) at high level.
+
+triggers:
+  - mvc
+  - model view controller
+  - controller
+  - view
+  - mvp
+  - mvvm
+  - presenter
+
+entrypoint: SKILL.md
+
+references:
+  - references/01-foundations.md
+  - references/02-roles-and-responsibilities.md
+  - references/03-mvc-inside-larger-architectures.md
+  - references/04-variants.md
+  - references/05-anti-patterns.md
+  - references/06-relationship-with-other-disciplines.md
+  - references/07-review-checklist.md
+  - references/08-user-preferences.md
+
+rules:
+  - MVC is a UI structure. The default modern use is inside the HTTP
+    driving adapter of a larger architecture (hexagonal, clean, onion,
+    layered).
+  - Controllers are thin. They parse input, call the application core,
+    build a view-model, select a view. They do not contain business
+    rules.
+  - Views are dumb. They render. They do not call services, do not
+    mutate state.
+  - The MVC model in a larger architecture is a view-model, not a
+    domain model.
+  - Do not answer "what is the architecture of this backend?" with
+    "MVC". MVC is a UI structure; the backend has its own architecture.

@@ -1,0 +1,45 @@
+name: layered-architecture
+description: >-
+  Layered Architecture skill (classical n-tier). Use when designing,
+  reviewing, or refactoring with layered architecture: presentation,
+  business, data layers with downward dependencies. Covers when layered
+  fits, when to migrate away, variants, anti-patterns, and review.
+
+triggers:
+  - layered architecture
+  - n-tier
+  - three-tier
+  - business layer
+  - service layer
+  - data access layer
+  - dao layer
+  - persistence layer
+  - presentation layer
+
+entrypoint: SKILL.md
+
+references:
+  - references/01-foundations.md
+  - references/02-the-three-layers.md
+  - references/03-dependency-direction.md
+  - references/04-variants.md
+  - references/05-anti-patterns.md
+  - references/06-relationship-with-other-disciplines.md
+  - references/07-review-checklist.md
+  - references/08-user-preferences.md
+
+rules:
+  - Dependencies point downward only. Presentation, Business, Data.
+    No skipping, no reverse, no cycles.
+  - Each layer has one responsibility. Presentation handles I/O.
+    Business holds rules. Data handles persistence.
+  - Database types do not leak above the data layer. Transport types do
+    not leak below the presentation layer.
+  - Layered is independent of frameworks. The framework lives in the
+    presentation and data layers; the architecture is the rules
+    enforced on top.
+  - Layered is a sibling of hexagonal/clean/onion, not compatible.
+    Pick one.
+  - Layered codebases that grow into rich-domain, long-lifetime,
+    multi-team or multi-transport conditions trigger a migration
+    evaluation, not a layered tweak.

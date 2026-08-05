@@ -1,4 +1,48 @@
-# Node.js Review
+# Node.js Review Skill
+
+## When to use
+
+The user asked for a Node.js review (event loop, streams, child processes, async patterns, package conventions, runtime behaviour) of a file, module, or PR.
+
+## When not to use
+
+- TypeScript-specific concerns (types, generics, strictness): `typescript-review`.
+- Backend architecture or layering: `software-architecture`.
+- Long-running services / queue consumers / graceful shutdown at the architecture level: `long-running-services-architecture`.
+- Serverless / Lambda runtime concerns: `serverless-architecture`.
+- Testing strategy: `testing-strategy`.
+
+## Inputs to inspect first
+
+- `package.json` (scripts, engines, dependencies, type field), lockfile, Node version constraint (`.nvmrc`, engines).
+- Module format (ESM vs CommonJS), top-level await usage, `"type": "module"`.
+- Test runner and lint setup.
+- Process model: HTTP server, CLI, worker, Lambda. Runtime model dictates conventions.
+- Streams, async iterators, event emitters in use.
+
+## How to work
+
+1. Inspect the project configuration before judging the code.
+2. Identify the runtime model (server, CLI, Lambda, worker).
+3. Run `npm test`, `npm run lint`, `npm run typecheck` if practical and safe.
+4. Walk Node-specific concerns (event-loop blocking, unhandled rejections, stream backpressure, child process lifecycle, signals, graceful shutdown).
+5. Group findings by severity. Do not modify code unless asked.
+
+## Output
+
+Findings cited by file and line, grouped: blockers (event-loop blocking, unhandled rejections, leaks), defects (stream backpressure, missing graceful shutdown, weak error contexts), nits (style, ESM/CJS consistency).
+
+## Escalation
+
+- Architecture issues: `software-architecture` and the relevant sub-skill.
+- Long-running service operational concerns: `long-running-services-architecture`.
+- Lambda specifics: `serverless-architecture`.
+- TypeScript concerns: `typescript-review`.
+- Subprocess/signal handling design: `subprocess-management`.
+- Errors beyond Node idiom: `error-handling-patterns`.
+- Security: `security-review`.
+
+---
 
 ## Purpose
 

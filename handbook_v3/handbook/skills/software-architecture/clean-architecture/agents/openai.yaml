@@ -1,0 +1,56 @@
+name: clean-architecture
+description: >-
+  Clean Architecture skill (Robert C. Martin, 2012). Use when designing
+  or reviewing software with the four-circle vocabulary: Entities, Use
+  Cases, Interface Adapters, Frameworks & Drivers. Distinguished from
+  hexagonal (ports/adapters) and onion (rings, separate Domain Services
+  ring) by its prescribed Use Case structure (Interactor + Input/Output
+  Boundary + Input/Output Data) and its three named adapter roles
+  (Controller, Presenter, Gateway).
+
+triggers:
+  - clean architecture
+  - uncle bob
+  - four circles
+  - entities use cases
+  - interface adapters
+  - frameworks and drivers
+  - dependency rule
+  - use case interactor
+  - input boundary
+  - output boundary
+  - presenter
+  - view model
+  - gateway
+
+entrypoint: SKILL.md
+
+references:
+  - references/01-foundations.md
+  - references/02-the-four-circles.md
+  - references/03-the-dependency-rule.md
+  - references/04-use-case-structure.md
+  - references/05-interface-adapters.md
+  - references/06-frameworks-and-drivers.md
+  - references/07-relationship-with-other-architectures.md
+  - references/08-anti-patterns.md
+  - references/09-review-checklist.md
+  - references/10-user-preferences.md
+
+rules:
+  - The Dependency Rule is non-negotiable. Source code dependencies
+    point inward only.
+  - Entities are framework-free. Use Cases are framework-free.
+  - Use Cases are implemented as Interactors with Input Boundary,
+    Output Boundary, Input Data, Output Data, and Gateway interfaces.
+    Each Use Case is one Interactor.
+  - Interface Adapters has three named roles, distinct from each other,
+    Controller, Presenter, Gateway. They are not collapsed into a single
+    "service" abstraction.
+  - Frameworks and database drivers are confined to the outermost circle.
+  - Vocabulary discipline: clean uses circles, Boundaries, Interactors,
+    Controller/Presenter/Gateway, View Model. It does not borrow ports,
+    driving/driven adapters, rings, or Domain Services as a separate
+    ring.
+  - Clean is a sibling of hexagonal and onion. Pick one; do not mix
+    vocabularies in one codebase.

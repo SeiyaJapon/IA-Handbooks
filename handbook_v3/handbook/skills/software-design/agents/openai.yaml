@@ -1,0 +1,46 @@
+name: software-design
+description: >-
+  Software Design mega-skill. Entry point for design at the code level:
+  how the inside of a component is shaped, what patterns and principles
+  apply. Coordinates the specific design skills (DDD, SOLID, design
+  patterns, dependency injection, refactoring, error handling,
+  concurrency, subprocess, CLI).
+
+triggers:
+  - software design
+  - code design
+  - design decision
+  - design review
+  - design method
+  - design patterns
+
+entrypoint: SKILL.md
+
+references:
+  - references/01-what-is-software-design.md
+  - references/02-design-methods-overview.md
+  - references/03-principles-overview.md
+  - references/04-when-to-apply-patterns.md
+  - references/05-relationship-with-architecture.md
+  - references/06-anti-patterns.md
+  - references/07-review-checklist.md
+  - references/08-user-preferences.md
+
+sub_skills:
+  - ddd
+  - solid-principles
+  - design-patterns
+  - dependency-injection
+  - refactoring-strategy
+  - error-handling-patterns
+  - concurrency-patterns
+  - subprocess-management
+  - cli-design
+
+rules:
+  - Design is the inside of a component, not the structure of the system.
+  - Principles before patterns. Patterns are tools, not goals.
+  - Apply a design method that fits the domain (DDD for rich, transaction
+    script for thin).
+  - Refactor when forces change.
+  - Pattern cargo cult is rejected.

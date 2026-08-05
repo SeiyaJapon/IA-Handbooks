@@ -1,4 +1,48 @@
-# AWS Review
+# AWS Review Skill
+
+## When to use
+
+The user asked for a review of code that uses AWS services (Lambda, EventBridge, S3, SQS, SNS, DynamoDB, IAM, API Gateway). Focus on correctness, idioms, IAM scope, and operational pitfalls.
+
+## When not to use
+
+- Cloud architecture design (VPC, ECS, ALB/NLB, multi-AZ, network topology): `aws-infrastructure`.
+- Provisioning IaC: `terraform-review`.
+- Container builds: `docker-review`.
+- Generic security review: `security-review` (this skill checks AWS idioms; security-review covers wider posture).
+
+## Inputs to inspect first
+
+- Which AWS services are in use; SDK version (v2 vs v3); language.
+- IAM policies attached to Lambdas / roles. Scope, conditions.
+- Event source mapping: triggers, batch size, max concurrency, DLQ.
+- S3 bucket policies, encryption, public access settings.
+- Lambda runtime, memory, timeout, concurrency settings, layers.
+- EventBridge: rules, targets, retry policy, archive.
+- DynamoDB: tables, indexes, capacity model, partition key choice.
+- API Gateway: type (REST, HTTP), authorisers, throttling.
+
+## How to work
+
+1. Inspect service usage and IAM scope first.
+2. Walk per-service concerns (Lambda cold start and connections, EventBridge retries, SQS visibility timeout, SNS fanout, S3 encryption and versioning, DynamoDB partition design).
+3. Group findings by severity. Do not modify infrastructure.
+
+## Output
+
+Findings cited by service and resource, grouped: blockers (overly permissive IAM, public S3, missing DLQ, no encryption), defects (cold-start exposure, idempotency gaps, schema drift on EventBridge), nits (tagging, naming).
+
+## Escalation
+
+- Architecture decisions (which service to use, multi-AZ, scale shape): `aws-infrastructure`.
+- IaC: `terraform-review`.
+- Security posture beyond IAM: `security-review`.
+- Compliance and regulated data: `compliance-patterns`.
+- Event-driven design: `event-driven-architecture`.
+- Serverless architecture: `serverless-architecture`.
+- Long-running services: `long-running-services-architecture`.
+
+---
 
 ## Purpose
 

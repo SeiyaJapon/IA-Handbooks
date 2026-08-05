@@ -1,4 +1,30 @@
-# Report Output
+# Report Output Skill
+
+## When to use
+
+The user asked for a structured technical report (sections, headings, evidence). Use at the end of the reasoning phase to package conclusions.
+
+## When not to use
+
+- Prose-first writing for mixed audiences: `prose-report`.
+- Status views and panoramic summaries: `status-presentation`.
+
+## How to work
+
+1. Identify the structure expected (architectural review, security findings, decision critique, etc.).
+2. Use the project's templates if any (`handbook/templates/`).
+3. Group by severity or by section as the structure demands.
+4. Avoid filler.
+
+## Output
+
+A structured report ready to share, with links/citations to evidence.
+
+## Escalation
+
+Use the appropriate output skill if the form does not match.
+
+---
 
 ## Purpose
 

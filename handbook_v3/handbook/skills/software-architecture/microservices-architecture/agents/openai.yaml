@@ -1,0 +1,39 @@
+name: microservices-architecture
+description: >-
+  Microservices Architecture skill. Use when designing or reviewing
+  systems with independently deployable services, data ownership, and
+  network communication. Covers boundaries, data, communication,
+  failure modes, and review.
+
+triggers:
+  - microservices
+  - microservice
+  - service per context
+  - distributed system
+  - service mesh
+  - api gateway
+  - service boundaries
+  - independent deployment
+
+entrypoint: SKILL.md
+
+references:
+  - references/01-foundations.md
+  - references/02-service-boundaries.md
+  - references/03-data-ownership.md
+  - references/04-inter-service-communication.md
+  - references/05-failure-modes.md
+  - references/06-relationship-with-other-disciplines.md
+  - references/07-anti-patterns.md
+  - references/08-review-checklist.md
+  - references/09-user-preferences.md
+
+rules:
+  - Each service owns its data. No shared databases.
+  - Each service is independently deployable.
+  - Inter-service contracts are explicit, documented, versioned.
+  - Modular monolith first. Microservices is a deliberate next step.
+  - Default communication is async (events). Synchronous calls have
+    timeouts, circuit breakers, retries.
+  - Each service is hexagonal/clean/onion internally.
+  - Microservices does not solve bad architecture. It distributes it.

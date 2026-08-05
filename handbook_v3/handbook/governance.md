@@ -153,12 +153,13 @@ Before creating a new category:
 Do not create categories for one-off noise.
 Do not flatten unrelated deliverables into the same file just to avoid creating a new category.
 
-Current categories: `audits`, `proposals`, `pr-reviews`
+Current categories: `audits`, `proposals`, `pr-reviews`, `reports`
 
 Category purpose:
 - `audits` — audit reports of existing code, infrastructure, or processes
 - `proposals` — architectural or design proposals studied before acting
 - `pr-reviews` — PR review documents and comment blocks ready to post
+- `reports` — informes para audiencias mixtas (producto, negocio, stakeholders): diagnósticos, decisiones pendientes, estado de producto
 
 ---
 
@@ -181,6 +182,7 @@ Current structure:
 - `tasks/` — work tasks in progress or recently completed, with a ticket or reference
 - `pending/` — blocked or waiting items, not yet actionable
 - `handbook-design/` — decisions and evolution of the handbook itself
+- `explorations/` — exploratory approximations not tied to a ticket (spikes, first passes at how to approach something), usually driven by the user
 
 ---
 
@@ -205,10 +207,10 @@ Current structure:
 
 For stable knowledge entries (flat files), keep entries short: one line that names a fact or points to a skill for detail. If a topic needs more than one or two lines to express, it belongs in a skill, not in memory.
 
-✅ `Hexagonal architecture is the default for new backend services — see skills/hexagonal-boundaries`
+✅ `Hexagonal architecture is the default for new backend services — see skills/software-architecture/hexagonal-architecture`
 ❌ A ten-line explanation of when and how to apply hexagonal architecture
 
-Work tracking entries (tasks/, pending/) may use the full work-item template.
+Work tracking entries (tasks/, pending/, explorations/) may use the full work-item template.
 
 ### When memory contradicts the code
 
@@ -239,6 +241,42 @@ Do not write ADRs for implementation details, bug fixes, or decisions that are o
 
 ---
 
+## Role activation and skill escalation
+
+At least one role is always active. The default role is `software-architect`. Additional roles activate alongside it when the task requires their lens; the `🎭` context block line then lists multiple roles separated by `+`, and the `🧩` line carries the union of their declared skills with no duplicates.
+
+Each role declares its toolbox in a `Skills that constitute its craft` section. That declaration is the source of truth for which skills belong to which role.
+
+When a skill's `Escalation` section points to another skill, apply this rule to decide what happens to the role line:
+
+- If the target skill **belongs to a role that is already active** (it is listed in that role's toolbox), only load the skill. The `🎭` line does not change. This is an internal escalation.
+- If the target skill **belongs to a role that is not currently active**, activate that role alongside the current ones. The skill loads as part of its role's toolbox, and the `🎭` line is updated with `🔄`.
+- If the target skill is **not declared in any role's toolbox**, load it under the role most directly responsible for the dimension it covers (usually `software-architect`).
+
+This rule keeps role activation honest without forcing every `Escalation` section in every skill to repeat the activation logic.
+
+---
+
 ## Repos Catalog Maintenance
 
 When a session involves a repository not listed in `memory/repos-catalog.md`, add it before closing. Update the `Last verified` date whenever a repo is added or the catalog is reviewed.
+
+---
+
+## Handbook Modifications
+
+The handbook is multi-agent. When adding or updating skills, roles, or situational table rows, propagate the change to all 4 agent adapters before closing the session:
+
+| File | Format |
+|---|---|
+| `CLAUDE.md` | Full handbook for Claude Code — update the situational table |
+| `AGENTS.md` | Full handbook for Codex / OpenAI agents — update the situational table |
+| `.junie/guidelines.md` | Full handbook for JetBrains Junie — update the situational table |
+| `.github/copilot-instructions.md` | Code-focused for GitHub Copilot — add pointer references under `## Project knowledge` |
+
+Copilot does not use the situational table format. Add pointers in the form:
+`See \`handbook/skills/<name>\` when <trigger condition>.`
+
+When the change also affects operational rules or structures (governance, memory layout, output categories), update `handbook/governance.md` directly. Do not duplicate governance content in the entry files.
+
+After any significant handbook change, append an entry to `handbook/memory/handbook-design/handbook-evolution.md` under `## Current State` and `## History`.

@@ -1,4 +1,40 @@
-# Performance Analysis
+# Performance Analysis Skill
+
+## When to use
+
+The user asked about latency, throughput, scaling, bottlenecks, profiling, or specific performance regressions.
+
+## When not to use
+
+- Generic "make it faster" without a concrete target or measurement: ask for the SLO, the profile, or a baseline first.
+- AI-specific cost/latency: `llm-ops`.
+- Database performance specifically: `database-design`.
+
+## Inputs to inspect first
+
+- The performance target (SLO, latency budget, throughput target).
+- The current measurement (profile, traces, metrics).
+- The bottleneck candidate (CPU, memory, I/O, lock contention, GC, network).
+- The workload shape (sustained, bursty, asymmetric).
+
+## How to work
+
+1. Verify there is a measurement; otherwise refuse to optimise blind.
+2. Identify the dominant cost.
+3. Recommend the smallest change that improves the dominant cost.
+4. Confirm with re-measurement.
+
+## Output
+
+Findings with measured baseline, identified bottleneck, recommended change, expected delta.
+
+## Escalation
+
+- Database queries and indexes: `database-design`.
+- AI cost/latency: `llm-ops`.
+- Architectural scaling: `software-architecture` and the relevant sub-skill (microservices, serverless, long-running).
+
+---
 
 ## Purpose
 

@@ -1,0 +1,47 @@
+name: architecture-patterns
+description: >-
+  Architecture Patterns mega-skill. Entry point for techniques applied
+  within an architecture: CQRS, Event Sourcing, transactional outbox,
+  saga, ACL, materialised view, repository, strangler fig, BFF, API
+  gateway. Distinct from architectures (which decide structure) and
+  design patterns (which operate at code level).
+
+triggers:
+  - architectural pattern
+  - architecture patterns
+  - cqrs
+  - event sourcing
+  - transactional outbox
+  - saga pattern
+  - anti-corruption layer
+  - acl
+  - materialised view
+  - repository pattern
+  - strangler fig
+  - backend for frontend
+  - api gateway
+  - circuit breaker
+  - bulkhead
+
+entrypoint: SKILL.md
+
+references:
+  - references/01-what-is-an-architectural-pattern.md
+  - references/02-patterns-overview.md
+  - references/03-when-to-apply-patterns.md
+  - references/04-pattern-composition.md
+  - references/05-relationship-with-architecture-and-design.md
+  - references/06-anti-patterns.md
+  - references/07-review-checklist.md
+  - references/08-user-preferences.md
+
+sub_skills:
+  - cqrs-decision
+  - event-sourcing
+
+rules:
+  - Patterns serve concrete problems, not as ceremony.
+  - Patterns are not architectures. They live within an architecture.
+  - One pattern at a time. Operate each before adopting the next.
+  - Half-applied patterns combine cost without benefit.
+  - Each adopted pattern has a written record of the reason it was chosen.

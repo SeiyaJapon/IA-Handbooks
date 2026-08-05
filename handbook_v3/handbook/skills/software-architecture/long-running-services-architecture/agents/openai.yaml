@@ -1,0 +1,39 @@
+name: long-running-services-architecture
+description: >-
+  Long-Running Services Architecture skill. Use when designing or
+  reviewing persistent processes (containerised APIs, daemons, workers,
+  queue consumers). Covers process lifecycle, resource management,
+  health probes, scaling, deployment, anti-patterns.
+
+triggers:
+  - long-running services
+  - persistent processes
+  - daemon
+  - container service
+  - ecs service
+  - kubernetes pod
+  - graceful shutdown
+  - queue consumer
+  - long-running worker
+
+entrypoint: SKILL.md
+
+references:
+  - references/01-foundations.md
+  - references/02-process-lifecycle.md
+  - references/03-resource-management.md
+  - references/04-health-and-readiness.md
+  - references/05-scaling-and-deployment.md
+  - references/06-relationship-with-other-disciplines.md
+  - references/07-anti-patterns.md
+  - references/08-review-checklist.md
+  - references/09-user-preferences.md
+
+rules:
+  - Graceful shutdown: SIGTERM handled, in-flight work drained.
+  - Resources are bounded: memory, CPU, connection pools, FDs.
+  - Liveness and readiness are separate probes.
+  - State outside the process; service is stateless.
+  - Restart is safe (no data loss, idempotent).
+  - Long-running is the runtime; the internal architecture
+    (hexagonal/clean/onion/layered) is a separate decision.

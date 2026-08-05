@@ -1,0 +1,49 @@
+name: onion-architecture
+description: >-
+  Onion Architecture skill (Jeffrey Palermo, 2008). Use when designing
+  or reviewing software with the rings vocabulary: Domain Model, Domain
+  Services, Application Services, External Layer. Distinguished from
+  hexagonal (ports/adapters) and clean (Boundaries, Interactors,
+  Controller/Presenter/Gateway) by its explicit Domain Services ring,
+  which separates intrinsic domain logic from application orchestration.
+
+triggers:
+  - onion architecture
+  - palermo
+  - rings
+  - domain services
+  - domain services ring
+  - application services ring
+  - external layer
+
+entrypoint: SKILL.md
+
+references:
+  - references/01-foundations.md
+  - references/02-the-four-rings.md
+  - references/03-the-dependency-rule.md
+  - references/04-domain-services-vs-application-services.md
+  - references/05-the-external-layer.md
+  - references/06-relationship-with-other-architectures.md
+  - references/07-anti-patterns.md
+  - references/08-review-checklist.md
+  - references/09-user-preferences.md
+
+rules:
+  - The dependency rule is non-negotiable. Source code dependencies
+    point inward only.
+  - Four rings, Domain Model, Domain Services, Application Services,
+    External Layer. The Domain Services ring is onion's distinguishing
+    feature.
+  - Domain Services hold cross-entity intrinsic domain logic.
+    Application Services hold use case orchestration. They are
+    different rings.
+  - Inner rings are framework-free.
+  - Vocabulary discipline, onion uses rings, Domain Services as a
+    layer, interfaces declared by inner rings, External Layer. It does
+    not borrow ports/adapters (hexagonal) or Boundaries/Interactors
+    (clean).
+  - Onion is a sibling of hexagonal and clean. Pick one; do not mix
+    vocabularies in one codebase.
+  - If the Domain Services ring is empty, evaluate hexagonal or clean
+    instead.
